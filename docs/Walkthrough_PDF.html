@@ -216,7 +216,7 @@
 
         <h2>🎉 Application Status: LIVE</h2>
         <p>Your InfoDemics misinformation spread simulator is now <strong>fully functional</strong> and running!</p>
-        <p><strong>Access URL:</strong> <code>http://localhost:8000/InfoDemics.html</code></p>
+        <p><strong>Access URL:</strong> <code>http://localhost:8000/apps/InfoDemics.html</code></p>
 
         <hr>
 
@@ -228,8 +228,8 @@
         <p>The application loads with:</p>
         <ul>
             <li>🎛️ <strong>Left Sidebar</strong>: Interactive controls for β, γ, and initial infected percentage</li>
-            <li>🕸️ <strong>Network Graph</strong>: 161 nodes visualized with physics-based layout</li>
-            <li>📊 <strong>Dataset Info</strong>: Shows 161 nodes, 266 edges, conspiracy count</li>
+            <li>🕸️ <strong>Network Graph</strong>: 160 nodes visualized with physics-based layout</li>
+            <li>📊 <strong>Dataset Info</strong>: Shows 160 nodes, 265 edges, conspiracy count</li>
         </ul>
 
         <h3>Network Visualization</h3>
@@ -271,9 +271,10 @@
         <ol>
             <li><strong>Open PowerShell</strong> in your project folder</li>
             <li><strong>Run the server:</strong>
-                <pre><code>python3 start_server.py</code></pre>
+                <pre><code>cd apps
+python3 start_server.py</code></pre>
             </li>
-            <li><strong>Browser opens automatically</strong> to http://localhost:8000/InfoDemics.html</li>
+            <li><strong>Browser opens automatically</strong> to http://localhost:8000/apps/InfoDemics.html</li>
         </ol>
 
         <h3>Running a Simulation</h3>
@@ -310,9 +311,9 @@
         <div class="success">
             <p><strong>Network Statistics:</strong></p>
             <ul>
-                <li>Total Nodes: 161</li>
-                <li>Total Edges: 266</li>
-                <li>Initial Conspiracy Nodes: ~105</li>
+                <li>Total Nodes: 160</li>
+                <li>Total Edges: 265</li>
+                <li>Initial Conspiracy Nodes: 89</li>
             </ul>
         </div>
 
@@ -389,23 +390,23 @@
                 <th>Status</th>
             </tr>
             <tr>
-                <td><code>InfoDemics.html</code></td>
+                <td><code>apps/InfoDemics.html</code></td>
                 <td>Web application</td>
                 <td><span class="status-badge status-working">✅ Working</span></td>
             </tr>
             <tr>
-                <td><code>start_server.py</code></td>
+                <td><code>apps/start_server.py</code></td>
                 <td>HTTP server</td>
                 <td><span class="status-badge status-active">✅ Running</span></td>
             </tr>
             <tr>
-                <td><code>nodes.csv</code></td>
-                <td>Network nodes (161)</td>
+                <td><code>data/nodes.csv</code></td>
+                <td>Network nodes (160)</td>
                 <td><span class="status-badge status-working">✅ Loaded</span></td>
             </tr>
             <tr>
-                <td><code>edges.csv</code></td>
-                <td>Network edges (266)</td>
+                <td><code>data/edges.csv</code></td>
+                <td>Network edges (265)</td>
                 <td><span class="status-badge status-working">✅ Loaded</span></td>
             </tr>
         </table>
@@ -416,7 +417,7 @@
 
         <h3>Requirements Met</h3>
         <ul>
-            <li>✅ <strong>Interactive Network Graph</strong> - Vis.js visualization with 161 nodes</li>
+            <li>✅ <strong>Interactive Network Graph</strong> - Vis.js visualization with 160 nodes</li>
             <li>✅ <strong>SIR Simulation Controls</strong> - Sliders for β, γ, initial infected %</li>
             <li>✅ <strong>SIR Algorithm</strong> - Network-based discrete-time model</li>
             <li>✅ <strong>Super-Spreader Intervention</strong> - Top 1% removal toggle</li>
@@ -442,8 +443,8 @@
             <ul>
                 <li>Server: <code>http://localhost:8000</code></li>
                 <li>Status: <span class="status-badge status-active">✅ ACTIVE</span></li>
-                <li>Application: InfoDemics.html</li>
-                <li>Data: nodes.csv (161 nodes), edges.csv (266 edges)</li>
+                <li>Application: apps/InfoDemics.html</li>
+                <li>Data: data/nodes.csv (160 nodes), data/edges.csv (265 edges)</li>
             </ul>
         </div>
 
@@ -452,7 +453,8 @@
         <pre><code>Press Ctrl+C in the PowerShell window</code></pre>
 
         <p><strong>To Restart Server:</strong></p>
-        <pre><code>python3 start_server.py</code></pre>
+        <pre><code>cd apps
+python3 start_server.py</code></pre>
 
         <hr>
 
@@ -517,10 +519,11 @@
         <h2>📞 Quick Reference</h2>
 
         <p><strong>Start Server:</strong></p>
-        <pre><code>python3 start_server.py</code></pre>
+        <pre><code>cd apps
+python3 start_server.py</code></pre>
 
         <p><strong>Access Application:</strong></p>
-        <pre><code>http://localhost:8000/InfoDemics.html</code></pre>
+        <pre><code>http://localhost:8000/apps/InfoDemics.html</code></pre>
 
         <p><strong>Files Location:</strong></p>
         <pre><code>d:\me\semester 5\BigData\project\misInfoProject\</code></pre>
