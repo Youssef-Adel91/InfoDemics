@@ -369,7 +369,7 @@
                 updateStats();
             } catch (error) {
                 console.error('Error loading data:', error);
-                alert('Error loading CSV files. Make sure nodes.csv and edges.csv are in the same folder as this HTML file.');
+                alert('Error loading CSV files from ../data/ folder.\n\nMake sure you are:\n1. Running the server from project root: python3 apps/start_server.py\n2. Accessing via http://localhost:8000/apps/InfoDemics.html\n3. NOT opening the HTML file directly (file:// URLs will not work)');
             }
         }
 
