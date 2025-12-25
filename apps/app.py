@@ -64,9 +64,9 @@ if 'selected_node' not in st.session_state:
 def load_data():
     """Load and preprocess the network data"""
     try:
-        # Load CSV files
-        nodes_df = pd.read_csv('nodes.csv')
-        edges_df = pd.read_csv('edges.csv')
+        # Load CSV files from data directory
+        nodes_df = pd.read_csv('../data/nodes.csv')
+        edges_df = pd.read_csv('../data/edges.csv')
         
         # Rename columns to match expected schema
         nodes_df = nodes_df.rename(columns={

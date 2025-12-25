@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +28,7 @@
             margin: 0 auto;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
 
@@ -41,7 +42,7 @@
         .header h1 {
             font-size: 3em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .header p {
@@ -233,6 +234,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -350,18 +352,18 @@
         // Load CSV data
         async function loadData() {
             try {
-                const nodesResponse = await fetch('nodes.csv');
-                const edgesResponse = await fetch('edges.csv');
-                
+                const nodesResponse = await fetch('../data/nodes.csv');
+                const edgesResponse = await fetch('../data/edges.csv');
+
                 const nodesText = await nodesResponse.text();
                 const edgesText = await edgesResponse.text();
-                
+
                 const nodesParsed = Papa.parse(nodesText, { header: true });
                 const edgesParsed = Papa.parse(edgesText, { header: true });
-                
+
                 nodesData = nodesParsed.data.filter(row => row.id);
                 edgesData = edgesParsed.data.filter(row => row.source && row.target);
-                
+
                 processData();
                 createInitialNetwork();
                 updateStats();
@@ -374,11 +376,11 @@
         function processData() {
             nodesData.forEach(node => {
                 node.followers_count = parseInt(node.followers) || 0;
-                node.category = node.label.includes('Non_Conspiracy') ? 'Non-Conspiracy' : 
-                               node.label.includes('Conspiracy') ? 'Conspiracy' : 'Non-Conspiracy';
-                
+                node.category = node.label.includes('Non_Conspiracy') ? 'Non-Conspiracy' :
+                    node.label.includes('Conspiracy') ? 'Conspiracy' : 'Non-Conspiracy';
+
                 // Calculate degree
-                node.degree = edgesData.filter(e => 
+                node.degree = edgesData.filter(e =>
                     e.source == node.id || e.target == node.id
                 ).length;
             });
@@ -424,7 +426,7 @@
         function updateStats() {
             document.getElementById('total-nodes').textContent = nodesData.length;
             document.getElementById('total-edges').textContent = edgesData.length;
-            document.getElementById('conspiracy-count').textContent = 
+            document.getElementById('conspiracy-count').textContent =
                 nodesData.filter(n => n.category === 'Conspiracy').length;
         }
 
@@ -435,7 +437,7 @@
             const removeSpreaders = document.getElementById('remove-spreaders').checked;
 
             let nodes = [...nodesData];
-            
+
             // Remove super-spreaders if requested
             if (removeSpreaders) {
                 nodes.sort((a, b) => b.degree - a.degree);
@@ -448,7 +450,7 @@
             const conspiracyNodes = nodes.filter(n => n.category === 'Conspiracy');
             const totalInfected = Math.floor(nodes.length * initialInfectedPct / 100);
             const additionalInfected = Math.max(0, totalInfected - conspiracyNodes.length);
-            
+
             const susceptibleNodes = nodes.filter(n => n.category === 'Non-Conspiracy');
             const randomInfected = susceptibleNodes
                 .sort(() => Math.random() - 0.5)
@@ -474,11 +476,11 @@
 
             // Run simulation
             const history = { time: [], S: [], I: [], R: [] };
-            
+
             for (let t = 0; t < 50; t++) {
                 const counts = { S: 0, I: 0, R: 0 };
                 Object.values(states).forEach(state => counts[state]++);
-                
+
                 history.time.push(t);
                 history.S.push(counts.S);
                 history.I.push(counts.I);
@@ -520,7 +522,7 @@
             const updatedNodes = graphData.nodes.map(node => ({
                 ...node,
                 color: states[node.id] === 'I' ? '#FF4B4B' :
-                       states[node.id] === 'R' ? '#4CAF50' : '#1E88E5'
+                    states[node.id] === 'R' ? '#4CAF50' : '#1E88E5'
             }));
 
             network.setData({
@@ -578,4 +580,5 @@
         window.addEventListener('load', loadData);
     </script>
 </body>
+
 </html>

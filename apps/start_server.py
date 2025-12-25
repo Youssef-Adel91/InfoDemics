@@ -11,7 +11,7 @@ from pathlib import Path
 
 # Configuration
 PORT = 8000
-DIRECTORY = Path(__file__).parent
+DIRECTORY = Path(__file__).parent.parent  # Point to project root
 
 class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
